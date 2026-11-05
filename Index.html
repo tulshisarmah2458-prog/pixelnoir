@@ -1,0 +1,543 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vice City | Jyotishman Sarmah</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Poppins:wght@300;400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #100D25;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* BACKGROUND LIGHTS */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: #ff4fa333;
+            filter: blur(130px);
+            border-radius: 50%;
+            top: 10%;
+            left: -180px;
+            z-index: -1;
+            animation: lightMove 7s infinite alternate;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: #00d9ff30;
+            filter: blur(130px);
+            border-radius: 50%;
+            bottom: 0;
+            right: -150px;
+            z-index: -1;
+            animation: lightMove 6s infinite alternate-reverse;
+        }
+
+        @keyframes lightMove {
+            from { transform: translateY(0) scale(1); }
+            to { transform: translateY(-50px) scale(1.3); }
+        }
+
+        /* SIDE BRANDING */
+        .side-brand {
+            position: fixed;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%) rotate(180deg);
+            writing-mode: vertical-rl;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            letter-spacing: 5px;
+            color: #FF4FA3;
+            text-shadow: 0 0 12px #FF4FA3;
+            z-index: 200;
+        }
+
+        /* NAVBAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 8%;
+            background: #100D25dd;
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid #ffffff20;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 23px;
+            font-weight: 800;
+            color: #FF4FA3;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px #FF4FA3;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: #00D9FF;
+            text-shadow: 0 0 12px #00D9FF;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            background:
+                linear-gradient(to bottom, #100D2540, #100D25),
+                url("https://www.rockstargames.com/VI/_next/static/media/Vice_City_Postcard_landscape.0v2njmlk2n-qm.jpg?akim=1&imdensity=1&imwidth=3840")
+                center/cover no-repeat;
+        }
+
+        .hero-tag {
+            color: #00D9FF;
+            letter-spacing: 6px;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(65px, 12vw, 125px);
+            color: #FF4FA3;
+            text-shadow: 0 0 15px #FF4FA3,
+                         0 0 40px #FF4FA3,
+                         0 0 80px #ff2e93;
+            animation: titleGlow 2s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 15px #FF4FA3; }
+            to {
+                text-shadow: 0 0 35px #FF4FA3,
+                             0 0 80px #ff2e93;
+            }
+        }
+
+        .hero h2 {
+            color: #00D9FF;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 8px;
+            font-size: clamp(17px, 4vw, 30px);
+            margin: 15px 0;
+            text-shadow: 0 0 20px #00D9FF;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: #eee;
+            line-height: 1.9;
+            margin: 15px 0 30px;
+        }
+
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #FF4FA3, #9347ff);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 0 18px #FF4FA3;
+            transition: .4s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px #FF4FA3,
+                        0 0 50px #FF4FA3;
+        }
+
+        /* GENERAL SECTIONS */
+        .section {
+            padding: 85px 9%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(25px, 4vw, 38px);
+            color: #00D9FF;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px #00D9FF;
+        }
+
+        .section-subtitle {
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+
+        /* FEATURE CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #ffffff0d;
+            border: 1px solid #ffffff25;
+            border-radius: 18px;
+            padding: 30px 20px;
+            backdrop-filter: blur(15px);
+            transition: .4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #FF4FA3;
+            box-shadow: 0 0 25px #FF4FA355;
+        }
+
+        .card h3 {
+            color: #FF4FA3;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #c9c3dc;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* IMAGE GALLERY */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid #ffffff30;
+            background: #25213D;
+            box-shadow: 0 5px 25px #0005;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+            transition: .6s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item p {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 18px 10px;
+            background: linear-gradient(transparent, #100D25);
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13px;
+            text-align: left;
+        }
+
+        /* ABOUT */
+        .about {
+            background: linear-gradient(135deg, #FF4FA315, #00D9FF15);
+            border-top: 1px solid #ffffff20;
+            border-bottom: 1px solid #ffffff20;
+        }
+
+        .about p {
+            max-width: 750px;
+            margin: auto;
+            line-height: 2;
+            color: #ddd;
+        }
+
+        .signature {
+            color: #FF4FA3;
+            text-shadow: 0 0 12px #FF4FA3;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 35px 15px;
+            text-align: center;
+            color: #aaa;
+            background: #090718;
+            line-height: 2;
+        }
+
+        footer span {
+            color: #FF4FA3;
+            font-weight: bold;
+            text-shadow: 0 0 12px #FF4FA3;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 800px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 8px;
+                font-size: 12px;
+            }
+
+            .side-brand {
+                display: none;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item img {
+                height: 230px;
+            }
+
+            .section {
+                padding: 55px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- YOUR NAME ON THE SIDE -->
+    <div class="side-brand">
+        JYOTISHMAN SARMAH • PERSONAL FAN WEBSITE
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">VICE CITY</div>
+
+        <div>
+            <a href="#home">HOME</a>
+            <a href="#world">WORLD</a>
+            <a href="#gallery">GALLERY</a>
+            <a href="#about">ABOUT</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-tag">A PERSONAL GAMING EXPERIENCE</div>
+
+        <h1>GTA VI</h1>
+
+        <h2>VICE CITY</h2>
+
+        <p>
+            Welcome to the next generation of Grand Theft Auto.
+            Explore Vice City, discover Leonida and experience
+            a world full of unforgettable adventures.
+        </p>
+
+        <a class="btn"
+           href="https://www.rockstargames.com/VI"
+           target="_blank">
+            EXPLORE GTA VI
+        </a>
+
+    </section>
+
+    <!-- WORLD -->
+    <section class="section" id="world">
+
+        <h2 class="section-title">EXPLORE LEONIDA</h2>
+
+        <p class="section-subtitle">
+            A world of sunshine, neon lights and unforgettable places.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>VICE CITY</h3>
+                <p>Bright lights, beautiful beaches and a vibrant city.</p>
+            </div>
+
+            <div class="card">
+                <h3>LEONIDA KEYS</h3>
+                <p>Discover the tropical islands and ocean views.</p>
+            </div>
+
+            <div class="card">
+                <h3>PORT GELLHORN</h3>
+                <p>Explore another side of the Leonida region.</p>
+            </div>
+
+            <div class="card">
+                <h3>GRASSRIVERS</h3>
+                <p>Discover the natural landscapes of Leonida.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- IMAGE GALLERY -->
+    <section class="section" id="gallery">
+
+        <h2 class="section-title">VICE CITY GALLERY</h2>
+
+        <p class="section-subtitle">
+            Explore the beautiful world of GTA VI.
+        </p>
+
+        <div class="gallery">
+
+            <div class="gallery-item">
+                <img
+                    src="https://www.rockstargames.com/VI/_next/static/media/Vice_City_Postcard_landscape.0v2njmlk2n-qm.jpg?akim=1&imdensity=1&imwidth=3840"
+                    alt="Vice City postcard"
+                    loading="lazy">
+                <p>VICE CITY</p>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://www.rockstargames.com/VI/_next/static/media/Leonida_Keys_Postcard_landscape.05oezf2h--~ed.jpg?akim=1&imdensity=1&imwidth=3840"
+                    alt="Leonida Keys"
+                    loading="lazy">
+                <p>LEONIDA KEYS</p>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://www.rockstargames.com/VI/_next/static/media/Port_Gellhorn_Postcard_landscape.176c2o75nmcr8.jpg?akim=1&imdensity=1&imwidth=3840"
+                    alt="Port Gellhorn"
+                    loading="lazy">
+                <p>PORT GELLHORN</p>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://www.rockstargames.com/VI/_next/static/media/Ambrosia_Postcard_landscape.0gd~9a41ia-rt.jpg?akim=1&imdensity=1&imwidth=3840"
+                    alt="Ambrosia"
+                    loading="lazy">
+                <p>AMBROSIA</p>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://www.rockstargames.com/VI/_next/static/media/Grassrivers_Postcard_landscape.15-10i39nhex2.jpg?akim=1&imdensity=1&imwidth=3840"
+                    alt="Grassrivers"
+                    loading="lazy">
+                <p>GRASSRIVERS</p>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://www.rockstargames.com/VI/_next/static/media/Mount_Kalaga_National_Park_Postcard_landscape.0c1cb4ocq16n3.jpg?akim=1&imdensity=1&imwidth=3840"
+                    alt="Mount Kalaga National Park"
+                    loading="lazy">
+                <p>MOUNT KALAGA</p>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://www.rockstargames.com/VI/_next/static/media/Jason_and_Lucia_Beach_landscape.0419q._86ukpt.jpg?akim=1&imdensity=1&imwidth=3840"
+                    alt="Jason and Lucia at the beach"
+                    loading="lazy">
+                <p>JASON & LUCIA</p>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://www.rockstargames.com/VI/_next/static/media/Cal_Hampton_landscape.17k7bnt3myg.2.jpg?akim=1&imdensity=1&imwidth=3840"
+                    alt="Cal Hampton"
+                    loading="lazy">
+                <p>CAL HAMPTON</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+
+        <h2 class="section-title">ABOUT THIS PROJECT</h2>
+
+        <p>
+            This unofficial GTA VI fan website is created by
+            <span class="signature">Jyotishman Sarmah</span>.
+            I am an aspiring web developer and gaming enthusiast
+            learning HTML and CSS while building creative projects.
+        </p>
+
+        <br><br>
+
+        <a class="btn"
+           href="https://www.rockstargames.com/"
+           target="_blank">
+            ROCKSTAR GAMES
+        </a>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        Designed by <span>JYOTISHMAN SARMAH</span>
+        <br>
+        © 2026 • PERSONAL FAN PROJECT
+        <br>
+        GAMING • DESIGN • DEVELOPMENT
+    </footer>
+
+</body>
+</html>
